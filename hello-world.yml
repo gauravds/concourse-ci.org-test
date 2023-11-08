@@ -1,0 +1,14 @@
+jobs:
+  - name: set-pipeline
+    plan:
+      - get: examples
+        trigger: true
+      - set_pipeline: hello-world # pipeline's name
+        file: examples/pipelines/hello-world.yml # pipeline's config
+
+resources:
+  - name: examples
+    type: git
+    icon: github
+    source:
+      uri: https://github.com/concourse/examples.git
